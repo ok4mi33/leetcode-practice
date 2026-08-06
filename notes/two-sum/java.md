@@ -36,3 +36,33 @@ Si no, guardo el número actual con su índice y sigo.
 ## Leccion general
 Cuando hay una busqueda repetida dentro de un loop (algo tipo "ya vi esto antes?"), pensar si un HashMap puede convertir esa busqueda de O(n) a O(1), a cambio de usar espacio extra.
 
+## Enfoque optimo (HashMap) - implementado
+
+Un solo loop. Por cada numero, calculo el complemento con la ecuacion target - nums[i].
+Si el complemento ya esta guardado en el HashMap (como clave), encontre la respuesta.
+Si no, guardo el numero actual como clave y su indice como valor.
+
+- Tiempo: O(n) - un solo recorrido, containsKey/get/put son O(1) promedio
+- Espacio: O(n) - por el HashMap
+
+### De donde sale la variable "complemento"
+Es la incognita de una ecuacion simple: num[i] + X = target, 
+despejando X = target - nums[i]. El complemento es el numero que necesito haber
+visto antes para completar la suma.
+
+### Detalle importante sobre HashMap con valores duplicados
+Si el array tiene numeros repetidos, el HashMap reemplaza el indice guardado cada vez
+que la misma clave se vuelve a guardar (solo puede haber un valor por clave). Esto
+no afecta la correctitud del problema tal como esta definido, porque el enunciado 
+garantiza una unica solucioni. Solo seria un problema real si la variante del ejercicio
+pidiera encontrar TODOS los pares posibles (ahi se necesitaria guardar una lista de
+indices por clave, no un solo indice).
+
+### Errores que cometi en el camino
+- Intente declarar el HashMap con nombre de variable (i, j) en vez de tipos de dato
+(Integer, Integer) dentro de los <>.
+- Le puse "int" antes de HashMap<.....>, cuando el tipo completo ya es HashMap<Integer, Integer>.
+- Al principio no separe if/else - el put() quedo dentro del mismo bloque if que el println,
+en vez de ser la rama alternativa.
+- Confundi que iba dentro de .put() - intente pasar target o solo un argumento, cuando
+necesita clave (nums[i] y valor (i).
