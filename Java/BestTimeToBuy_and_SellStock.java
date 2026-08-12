@@ -15,7 +15,7 @@ public class BestTimeToBuy_and_SellStock {
   // loops
 
   // para cada precio del array, empezando desde el segundo (i = 1)
-  for(int i = 0; i < prices.length; i++) {
+  for(int i = 1; i < prices.length; i++) {
 
     // calculo la ganancia si vendiera hoy = prices[i] - precioMinimo
     int ganancia = prices[i] - precioMinimo;
@@ -38,5 +38,20 @@ public class BestTimeToBuy_and_SellStock {
     }
 
     return maxGanancia;
+  }
+
+  public static void main(String[] args) {
+
+    // se declara el array de prueba
+    
+    int[] prices = {7, 6, 4, 3, 1};
+
+    // se llama a MejorDia con ese array, y guardamos el resultado
+    
+    int resultado = MejorDia(prices);
+
+    // se imprime el resultado
+    System.out.println(resultado);
+
   }
 }
