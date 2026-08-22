@@ -18,7 +18,7 @@
 
 public class MaximunDepthBinaryTree {
   
-  public class TreeNode {
+  public static class TreeNode {
       int val;
       TreeNode left;
       TreeNode right;
@@ -57,7 +57,22 @@ public class MaximunDepthBinaryTree {
   public static void main(String[] args) {
 
 
-    TreeNode resultado = profundidadMaxima(4);
+    TreeNode raiz = new TreeNode(3);
+    TreeNode nueve = new TreeNode(9);
+    TreeNode veinte = new TreeNode(20);
+
+    raiz.left = nueve;
+    raiz.right = veinte;
+
+    TreeNode quince = new TreeNode(15);
+
+    veinte.left = quince;
+
+    TreeNode siete = new TreeNode(7);
+
+    veinte.right = siete;
+
+    int resultado = profundidadMaxima(raiz); 
 
     System.out.println(resultado);
 
